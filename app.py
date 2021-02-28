@@ -19,8 +19,6 @@ def main():
         state.output = noise_text
         text_input = st.text_area("Câu sai sinh:", value=state.output)
     if st.button("Correct"):
-        text_input = model.spelling_correct(text_input)
-
         state.text_correct = model.spelling_correct(text_input)
 
 
