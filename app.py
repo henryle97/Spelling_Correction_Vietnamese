@@ -10,17 +10,16 @@ import nltk
 
 def main():
     model, synther = load_model()
-    st.title("Chương trình sửa lỗi chính tả tiếng việt")
+    st.title("Chương trình sửa lỗi chính tả tiếng Việt")
     # Load model
     state.input = ""
     text_input = st.text_area("Gõ câu sai tại đây:", value=state.input)
     if st.button("Sinh lỗi"):
-        noise_text = synther.add_noise(text_input, percent_err=0.15)
+        noise_text = synther.add_noise(text_input, percent_err=0.3)
         state.output = noise_text
         text_input = st.text_area("Câu sai sinh:", value=state.output)
     if st.button("Correct"):
         state.text_correct = model.spelling_correct(text_input)
-
 
         st.text("Câu nhiễu: ")
         st.success(text_input)
