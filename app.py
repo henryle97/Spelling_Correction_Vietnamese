@@ -15,7 +15,7 @@ def main():
     state.input = ""
     state.noise = ""
     text_input = st.text_area("Nhập đầu vào:", value=state.input)
-
+    text_input = text_input.strip()
     if st.button("Correct"):
         state.noise = text_input
         state.text_correct = model.spelling_correct(state.noise)
@@ -43,7 +43,7 @@ def main():
 def load_model():
     print("Loading model ...")
     nltk.download('punkt')
-    model = Predictor(weight_path='weights/seq2seq.pth')
+    model = Predictor(weight_path='weights/seq2seq.pth', have_att=True)
     synther = SynthesizeData()
     return model, synther
 

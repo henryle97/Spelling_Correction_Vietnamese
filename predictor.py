@@ -7,9 +7,10 @@ from params import *
 from models.seq2seq import Seq2Seq
 from utils.utils import *
 from dataset.add_noise import SynthesizeData
+from models.seq2seq_without_attention import Seq2Seq_WithoutAtt
 
 class Predictor:
-    def __init__(self, weight_path):
+    def __init__(self, weight_path, have_att=False):
         ENC_EMB_DIM = 256
         DEC_EMB_DIM = 256
         ENC_HID_DIM = 512
@@ -22,10 +23,18 @@ class Predictor:
 
         INPUT_DIM = self.vocab.__len__()
         OUTPUT_DIM = self.vocab.__len__()
-        self.model = Seq2Seq(input_dim=INPUT_DIM, output_dim=OUTPUT_DIM, encoder_embbeded=ENC_EMB_DIM,
-                             decoder_embedded=DEC_EMB_DIM,
-                             encoder_hidden=ENC_HID_DIM, decoder_hidden=DEC_HID_DIM, encoder_dropout=ENC_DROPOUT,
-                             decoder_dropout=DEC_DROPOUT)
+
+        if have_att:
+            self.model = Seq2Seq(input_dim=INPUT_DIM, output_dim=OUTPUT_DIM, encoder_embbeded=ENC_EMB_DIM,
+                                 decoder_embedded=DEC_EMB_DIM,
+                                 encoder_hidden=ENC_HID_DIM, decoder_hidden=DEC_HID_DIM, encoder_dropout=ENC_DROPOUT,
+                                 decoder_dropout=DEC_DROPOUT)
+        else:
+            self.model = Seq2Seq_WithoutAtt(input_dim=INPUT_DIM, output_dim=OUTPUT_DIM, encoder_embbeded=ENC_EMB_DIM,
+                                 decoder_embedded=DEC_EMB_DIM,
+                                 encoder_hidden=ENC_HID_DIM, decoder_hidden=DEC_HID_DIM, encoder_dropout=ENC_DROPOUT,
+                                 decoder_dropout=DEC_DROPOUT)
+
         self.load_weights(weight_path)
         if torch.cuda.is_available():
             self.device = "cuda"
