@@ -5,7 +5,7 @@ import numpy as np
 from predictor import Predictor
 from dataset.add_noise import SynthesizeData
 
-state = SessionState.get(text_correct="", input="")
+state = SessionState.get(text_correct="", input="", noise="")
 import nltk
 
 def main():
@@ -13,16 +13,22 @@ def main():
     st.title("Chương trình sửa lỗi chính tả tiếng Việt")
     # Load model
     state.input = ""
-    text_input = st.text_area("Gõ câu sai tại đây:", value=state.input)
-    if st.button("Sinh lỗi"):
-        noise_text = synther.add_noise(text_input, percent_err=0.3)
-        state.output = noise_text
-        text_input = st.text_area("Câu sai sinh:", value=state.output)
-    if st.button("Correct"):
-        state.text_correct = model.spelling_correct(text_input)
-
+    state.noise = ""
+    text_input = st.text_area("Nhập đầu vào:", value=state.input)
+    if st.button("Add noise and Correct"):
+        state.noise = synther.add_noise(text_input, percent_err=0.3)
+        # state.output = noise_text
+        state.text_correct = model.spelling_correct(state.noise)
         st.text("Câu nhiễu: ")
-        st.success(text_input)
+        st.success(state.noise)
+        st.text("Kết quả:")
+        st.success(state.text_correct)
+
+    if st.button("Correct"):
+        state.noise = text_input
+        state.text_correct = model.spelling_correct(state.noise)
+        st.text("Câu nhiễu: ")
+        st.success(state.noise)
         st.text("Kết quả:")
         st.success(state.text_correct)
 
