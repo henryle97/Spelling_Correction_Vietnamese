@@ -15,6 +15,16 @@ def main():
     state.input = ""
     state.noise = ""
     text_input = st.text_area("Nhập đầu vào:", value=state.input)
+
+    if st.button("Correct"):
+        state.noise = text_input
+        state.text_correct = model.spelling_correct(state.noise)
+        st.text("Câu nhiễu: ")
+        st.success(state.noise)
+        st.text("Kết quả:")
+        st.success(state.text_correct)
+
+
     if st.button("Add noise and Correct"):
         state.noise = synther.add_noise(text_input, percent_err=0.3)
         # state.output = noise_text
@@ -24,13 +34,7 @@ def main():
         st.text("Kết quả:")
         st.success(state.text_correct)
 
-    if st.button("Correct"):
-        state.noise = text_input
-        state.text_correct = model.spelling_correct(state.noise)
-        st.text("Câu nhiễu: ")
-        st.success(state.noise)
-        st.text("Kết quả:")
-        st.success(state.text_correct)
+
 
     # state.sync()
 
