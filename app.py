@@ -12,7 +12,7 @@ def main():
     model, synther = load_model()
     st.title("Chương trình sửa lỗi chính tả tiếng việt")
     # Load model
-
+    state.input = ""
     text_input = st.text_area("Gõ câu sai tại đây:", value=state.input)
     if st.button("Sinh lỗi"):
         noise_text = synther.add_noise(text_input, percent_err=0.15)
@@ -24,10 +24,10 @@ def main():
         state.text_correct = model.spelling_correct(text_input)
 
 
-    st.text("Câu nhiễu: ")
-    st.success(text_input)
-    st.text("Kết quả:")
-    st.success(state.text_correct)
+        st.text("Câu nhiễu: ")
+        st.success(text_input)
+        st.text("Kết quả:")
+        st.success(state.text_correct)
 
     # state.sync()
 
