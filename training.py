@@ -3,6 +3,14 @@ from params import alphabets
 import numpy as np
 import os
 
+if not os.path.exists('./checkpoint'):
+  os.mkdir('./checkpoint')
+
+if not os.path.exists('./weights'):
+  os.mkdir('./weights')
+
+if not os.path.exists('./log'):
+  os.mkdir('./log')
 
 def load_dataset(ngrams_path):
     if not os.path.exists(ngrams_path):

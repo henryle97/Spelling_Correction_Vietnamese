@@ -1,10 +1,10 @@
 import nltk
 import pandas as pd
 from tqdm import tqdm
-
-from params import alphabets
 import re
 import itertools
+import sys
+sys.path.append("..")
 from params import MAXLEN, NGRAM
 import numpy as np
 
@@ -79,5 +79,6 @@ class CreateDataset():
 
 
 if __name__ == "__main__":
-    creater = CreateDataset()
+
+    creater = CreateDataset(csv_path='../data/samples_sentence.csv', save_path="../data/list_ngrams.npy")
     creater.processing()

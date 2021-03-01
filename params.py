@@ -1,12 +1,4 @@
-import os
-if not os.path.exists('./checkpoint'):
-  os.mkdir('./checkpoint')
-
-if not os.path.exists('./weights'):
-  os.mkdir('./weights')
-
-if not os.path.exists('./log'):
-  os.mkdir('./log')
+print("here")
 
 DEVICE = 'cpu'
 ENC_EMB_DIM = 256

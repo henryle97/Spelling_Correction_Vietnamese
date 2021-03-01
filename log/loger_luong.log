@@ -1,4 +1,2 @@
-iter: 000001 - train loss: 2.724 - lr: 1.20e-05 - load time: 0.01 - gpu time: 1.61
-iter: 000002 - train loss: 2.511 - lr: 1.20e-05 - load time: 0.00 - gpu time: 1.67
-iter: 000003 - train loss: 2.824 - lr: 1.20e-05 - load time: 0.01 - gpu time: 1.68
-iter: 000004 - train loss: 2.581 - lr: 1.20e-05 - load time: 0.00 - gpu time: 1.64
+iter: 000001 - train loss: 3.044 - lr: 1.20e-05 - load time: 0.01 - gpu time: 1.47
+iter: 000002 - train loss: 2.203 - lr: 1.20e-05 - load time: 0.00 - gpu time: 1.48
