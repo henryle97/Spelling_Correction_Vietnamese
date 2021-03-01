@@ -1,6 +1,8 @@
 import numpy as np
 import re
 import unidecode
+import nltk
+nltk.download('punkt')
 from nltk.tokenize import word_tokenize
 import string
 

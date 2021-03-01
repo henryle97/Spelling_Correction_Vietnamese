@@ -1,6 +1,6 @@
 import torch
 import numpy as np
-
+from params import PERCENT_NOISE
 
 class AutoCorrectDataset(torch.utils.data.Dataset):
     def __init__(self, list_ngram, transform_noise, vocab, maxlen):

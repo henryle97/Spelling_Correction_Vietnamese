@@ -46,7 +46,7 @@ class Decoder(nn.Module):
         encoder_outputs: src_len x batch_size x hid_dim
         """
 
-        input = input.unsqueeze(0)
+        input = input.unsqueeze(0)  # 1 x B
 
         embedded = self.dropout(self.embedding(input))
 
