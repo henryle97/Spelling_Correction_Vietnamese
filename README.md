@@ -22,7 +22,7 @@ python create_dataset.py
 ### Model (character-level)
 ##### List of neural models in the repo:
 
-- [```Seq2Seq``](weights/seq2seq_without_att.pth)
+- [```Seq2Seq```](weights/seq2seq_without_att.pth)
 - [```Seq2Seq-BahdanauAttention```](weights/seq2seq.pth)
 
 ### Training
