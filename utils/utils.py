@@ -70,9 +70,7 @@ def batch_translate_beam_search(src, model, beam_size=4, candidates=1, max_seq_l
             sent = beamsearch(memory, model, device, beam_size, candidates, max_seq_length, sos_token, eos_token)
             sents.append(sent)
 
-    sents = np.asarray(sents)
-
-    return sents
+    return np.asarray(sents)
 
 
 def translate_beam_search(src, model, beam_size=4, candidates=1, max_seq_length=128, sos_token=1, eos_token=2):
@@ -113,7 +111,7 @@ def beamsearch(memory, model, device, beam_size=4, candidates=1, max_seq_length=
         scores, ks = beam.sort_finished(minimum=1)
 
         hypothesises = []
-        for i, (times, k) in enumerate(ks[:candidates]):
+        for times, k in ks[:candidates]:
             hypothesis = beam.get_hypothesis(times, k)
             hypothesises.append(hypothesis)
 

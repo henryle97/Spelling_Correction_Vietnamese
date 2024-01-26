@@ -62,10 +62,7 @@ def compute_accuracy(ground_truth, predictions, mode='full_sequence'):
                     correct_count += 1
             avg_accuracy = correct_count / len(ground_truth)
         except ZeroDivisionError:
-            if not predictions:
-                avg_accuracy = 1
-            else:
-                avg_accuracy = 0
+            avg_accuracy = 1 if not predictions else 0
     elif mode == 'CER':
         cer_list = []
         for index, label in enumerate(ground_truth):

@@ -41,9 +41,7 @@ class Trainer():
         self.checkpoint = CHECKPOINT
         self.export_weights = EXPORT
         self.metrics = MAX_SAMPLE_VALID
-        logger = LOG
-
-        if logger:
+        if logger := LOG:
             self.logger = Logger(logger)
 
         self.iter = 0
@@ -77,14 +75,10 @@ class Trainer():
     def data_gen(self, list_ngrams_np, synthesizer, vocab, is_train=True):
         dataset = AutoCorrectDataset(list_ngrams_np, transform_noise=synthesizer, vocab=vocab, maxlen=MAXLEN)
 
-        shuffle = True if is_train else False
-        gen = DataLoader(
-            dataset,
-            batch_size=BATCH_SIZE,
-            shuffle=shuffle,
-            drop_last=False)
-
-        return gen
+        shuffle = bool(is_train)
+        return DataLoader(
+            dataset, batch_size=BATCH_SIZE, shuffle=shuffle, drop_last=False
+        )
 
     def step(self, batch):
         self.model.train()
@@ -111,9 +105,7 @@ class Trainer():
         self.optimizer.step()
         self.scheduler.step()
 
-        loss_item = loss.item()
-
-        return loss_item
+        return loss.item()
 
     def train(self):
         print("Begin training from iter: ", self.iter)
@@ -124,7 +116,7 @@ class Trainer():
         best_acc = -1
 
         data_iter = iter(self.train_gen)
-        for i in range(self.num_iters):
+        for _ in range(self.num_iters):
             self.iter += 1
 
             start = time.time()
@@ -165,7 +157,7 @@ class Trainer():
                 print(info)
                 print("--- Sentence predict ---")
                 for pred, inp, label in zip(preds, inp_sents, actuals):
-                    infor_predict = 'Pred: {} - Inp: {} - Label: {}'.format(pred, inp, label)
+                    infor_predict = f'Pred: {pred} - Inp: {inp} - Label: {label}'
                     print(infor_predict)
                     self.logger.log(infor_predict)
                 self.logger.log(info)
@@ -248,11 +240,7 @@ class Trainer():
         pred_sents, actual_sents, img_files, probs = self.predict(sample)
 
         if errorcase:
-            wrongs = []
-            for i in range(len(img_files)):
-                if pred_sents[i] != actual_sents[i]:
-                    wrongs.append(i)
-
+            wrongs = [i for i in range(len(img_files)) if pred_sents[i] != actual_sents[i]]
             pred_sents = [pred_sents[i] for i in wrongs]
             actual_sents = [actual_sents[i] for i in wrongs]
             img_files = [img_files[i] for i in wrongs]
@@ -302,10 +290,11 @@ class Trainer():
 
         for name, param in self.model.named_parameters():
             if name not in state_dict:
-                print('{} not found'.format(name))
+                print(f'{name} not found')
             elif state_dict[name].shape != param.shape:
                 print(
-                    '{} missmatching shape, required {} but found {}'.format(name, param.shape, state_dict[name].shape))
+                    f'{name} missmatching shape, required {param.shape} but found {state_dict[name].shape}'
+                )
                 del state_dict[name]
 
         self.model.load_state_dict(state_dict, strict=False)

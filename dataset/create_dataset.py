@@ -42,12 +42,14 @@ class CreateDataset():
         for p in tqdm(phrases):
             if not re.match(self.alphabets_regex, p.lower()):
                 continue
-            if len(phrases) == 0:
+            if not phrases:
                 continue
 
-            for ngr in self.gen_ngrams(p, NGRAM):
-                if len(" ".join(ngr)) < MAXLEN:
-                    list_ngrams.append(" ".join(ngr))
+            list_ngrams.extend(
+                " ".join(ngr)
+                for ngr in self.gen_ngrams(p, NGRAM)
+                if len(" ".join(ngr)) < MAXLEN
+            )
         print("DONE extract ngrams, total ngrams: ", len(list_ngrams))
 
         # save ngrams
@@ -56,10 +58,12 @@ class CreateDataset():
         print("Done create dataset - ngrams")
 
     def preprocessing_data(self, row):
-        processed = re.sub(
-            r'[^aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ0123456789!"#$%&''()*+,-./:;<=>?@[\]^_`{|}~ ]',
-            "", row)
-        return processed
+        return re.sub(
+            r'[^aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ0123456789!"#$%&'
+            '()*+,-./:;<=>?@[\]^_`{|}~ ]',
+            "",
+            row,
+        )
 
     def extract_phrases(self, text):
         return re.findall(r'\w[\w ]+', text)
@@ -67,10 +71,7 @@ class CreateDataset():
     def gen_ngrams(self, text, n=5):
         tokens = text.split()
 
-        if len(tokens) < n:
-            return [tokens]
-
-        return nltk.ngrams(text.split(), n)
+        return [tokens] if len(tokens) < n else nltk.ngrams(text.split(), n)
 
     def save_ngrams(self, list_ngrams, save_path='ngrams_list.npy'):
         with open(save_path, 'wb') as f:
