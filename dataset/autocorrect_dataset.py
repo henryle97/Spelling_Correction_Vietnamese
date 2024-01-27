@@ -35,12 +35,10 @@ class AutoCorrectDataset(torch.utils.data.Dataset):
             correct_sent_idxs,
             np.zeros(self.maxlen - tgt_len, dtype=np.int32)))
 
-        rs = {
+        return {
             'src': torch.LongTensor(src),
             'tgt': torch.LongTensor(tgt),
         }
-
-        return rs
 
     def __len__(self):
         return len(self.list_ngram)

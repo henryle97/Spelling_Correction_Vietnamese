@@ -59,10 +59,7 @@ class Predictor:
             prob = None
         else:
             translated_sentence, prob = translate(src, self.model)
-        # print(translated_sentence)
-        pred_sent = self.vocab.decode(translated_sentence.tolist()[0])
-
-        return pred_sent
+        return self.vocab.decode(translated_sentence.tolist()[0])
 
     def spelling_correct(self, sentence):
         # Remove characters that out of vocab
@@ -84,8 +81,7 @@ class Predictor:
                 correct_ngram_str_array.append(correct_ngram_str)
             correct_phrase = self.reconstruct_from_ngrams(correct_ngram_str_array)
             correct_phrases.append(correct_phrase)
-        correct_sentence = self.decode_phrases(correct_phrases, phrases_all, index_sent_dict)
-        return correct_sentence
+        return self.decode_phrases(correct_phrases, phrases_all, index_sent_dict)
 
     def reconstruct_from_ngrams(self, predicted_ngrams):
         '''
@@ -97,9 +93,7 @@ class Predictor:
             tokens = re.split(r' +', ngram)
             for wid, word in enumerate(tokens):
                 candidates[nid + wid].update([word])
-        # print(candidates)
-        output = ' '.join(c.most_common(1)[0][0] for c in candidates if len(c) != 0)
-        return output
+        return ' '.join(c.most_common(1)[0][0] for c in candidates if len(c) != 0)
 
     def extract_phrases(self, text):
         pattern = r'\w[\w ]*|\s\W+|\W+'
@@ -144,20 +138,18 @@ class Predictor:
     def gen_ngrams(self, sent, n=5):
         tokens = sent.split()
 
-        if len(tokens) < n:
-            return [tokens]
-
-        return nltk.ngrams(sent.split(), n)
+        return [tokens] if len(tokens) < n else nltk.ngrams(sent.split(), n)
 
     def load_weights(self, filename):
         state_dict = torch.load(filename, map_location=torch.device('cpu'))
 
         for name, param in self.model.named_parameters():
             if name not in state_dict:
-                print('{} not found'.format(name))
+                print(f'{name} not found')
             elif state_dict[name].shape != param.shape:
                 print(
-                    '{} missmatching shape, required {} but found {}'.format(name, param.shape, state_dict[name].shape))
+                    f'{name} missmatching shape, required {param.shape} but found {state_dict[name].shape}'
+                )
                 del state_dict[name]
 
         self.model.load_state_dict(state_dict, strict=False)

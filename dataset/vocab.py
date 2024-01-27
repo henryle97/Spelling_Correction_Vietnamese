@@ -18,15 +18,13 @@ class Vocab():
     def decode(self, ids):
         first = 1 if self.go in ids else 0
         last = ids.index(self.eos) if self.eos in ids else None
-        sent = ''.join([self.i2c[i] for i in ids[first:last]])
-        return sent
+        return ''.join([self.i2c[i] for i in ids[first:last]])
 
     def __len__(self):
         return len(self.c2i) + 3
 
     def batch_decode(self, arr):
-        texts = [self.decode(ids) for ids in arr]
-        return texts
+        return [self.decode(ids) for ids in arr]
 
     def __str__(self):
         return self.chars

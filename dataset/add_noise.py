@@ -112,102 +112,92 @@ class SynthesizeData(object):
             return candidates[chosen_one]
 
     def getKeyboardNeighbors(self):
-        keyboardNeighbors = {}
-        keyboardNeighbors['a'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['ă'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['â'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['á'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['à'] = "aáàảãăắằẳẵâấầẩẫ"
-        keyboardNeighbors['ả'] = "aảã"
-        keyboardNeighbors['ã'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['ạ'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['ắ'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['ằ'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['ẳ'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['ặ'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['ẵ'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['ấ'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['ầ'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['ẩ'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['ẫ'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['ậ'] = "aáàảãạăắằẳẵặâấầẩẫậ"
-        keyboardNeighbors['b'] = "bh"
-        keyboardNeighbors['c'] = "cgn"
-        keyboardNeighbors['d'] = "đctơở"
-        keyboardNeighbors['đ'] = "d"
-        keyboardNeighbors['e'] = "eéèẻẽẹêếềểễệbpg"
-        keyboardNeighbors['é'] = "eéèẻẽẹêếềểễệ"
-        keyboardNeighbors['è'] = "eéèẻẽẹêếềểễệ"
-        keyboardNeighbors['ẻ'] = "eéèẻẽẹêếềểễệ"
-        keyboardNeighbors['ẽ'] = "eéèẻẽẹêếềểễệ"
-        keyboardNeighbors['ẹ'] = "eéèẻẽẹêếềểễệ"
-        keyboardNeighbors['ê'] = "eéèẻẽẹêếềểễệá"
-        keyboardNeighbors['ế'] = "eéèẻẽẹêếềểễệố"
-        keyboardNeighbors['ề'] = "eéèẻẽẹêếềểễệ"
-        keyboardNeighbors['ể'] = "eéèẻẽẹêếềểễệôốồổỗộ"
-        keyboardNeighbors['ễ'] = "eéèẻẽẹêếềểễệ"
-        keyboardNeighbors['ệ'] = "eéèẻẽẹêếềểễệ"
-        keyboardNeighbors['g'] = "qgộ"
-        keyboardNeighbors['h'] = "h"
-        keyboardNeighbors['i'] = "iíìỉĩịat"
-        keyboardNeighbors['í'] = "iíìỉĩị"
-        keyboardNeighbors['ì'] = "iíìỉĩị"
-        keyboardNeighbors['ỉ'] = "iíìỉĩị"
-        keyboardNeighbors['ĩ'] = "iíìỉĩị"
-        keyboardNeighbors['ị'] = "iíìỉĩịhự"
-        keyboardNeighbors['k'] = "klh"
-        keyboardNeighbors['l'] = "ljidđ"
-        keyboardNeighbors['m'] = "mn"
-        keyboardNeighbors['n'] = "mnedư"
-        keyboardNeighbors['o'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['ó'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['ò'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['ỏ'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['õ'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['ọ'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['ô'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['ố'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['ồ'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['ổ'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['ộ'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['ỗ'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['ơ'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['ớ'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['ờ'] = "oóòỏọõôốồổỗộơớờởợỡà"
-        keyboardNeighbors['ở'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['ợ'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        keyboardNeighbors['ỡ'] = "oóòỏọõôốồổỗộơớờởợỡ"
-        # keyboardNeighbors['p'] = "op"
-        # keyboardNeighbors['q'] = "qọ"
-        # keyboardNeighbors['r'] = "rht"
-        # keyboardNeighbors['s'] = "s"
-        # keyboardNeighbors['t'] = "tp"
-        keyboardNeighbors['u'] = "uúùủũụưứừữửựhiaạt"
-        keyboardNeighbors['ú'] = "uúùủũụưứừữửự"
-        keyboardNeighbors['ù'] = "uúùủũụưứừữửự"
-        keyboardNeighbors['ủ'] = "uúùủũụưứừữửự"
-        keyboardNeighbors['ũ'] = "uúùủũụưứừữửự"
-        keyboardNeighbors['ụ'] = "uúùủũụưứừữửự"
-        keyboardNeighbors['ư'] = "uúùủũụưứừữửựg"
-        keyboardNeighbors['ứ'] = "uúùủũụưứừữửự"
-        keyboardNeighbors['ừ'] = "uúùủũụưứừữửự"
-        keyboardNeighbors['ử'] = "uúùủũụưứừữửự"
-        keyboardNeighbors['ữ'] = "uúùủũụưứừữửự"
-        keyboardNeighbors['ự'] = "uúùủũụưứừữửựg"
-        keyboardNeighbors['v'] = "v"
-        keyboardNeighbors['x'] = "x"
-        keyboardNeighbors['y'] = "yýỳỷỵỹụ"
-        keyboardNeighbors['ý'] = "yýỳỷỵỹ"
-        keyboardNeighbors['ỳ'] = "yýỳỷỵỹ"
-        keyboardNeighbors['ỷ'] = "yýỳỷỵỹ"
-        keyboardNeighbors['ỵ'] = "yýỳỷỵỹ"
-        keyboardNeighbors['ỹ'] = "yýỳỷỵỹ"
-        # keyboardNeighbors['w'] = "wv"
-        # keyboardNeighbors['j'] = "jli"
-        # keyboardNeighbors['z'] = "zs"
-        # keyboardNeighbors['f'] = "ft"
-
-        return keyboardNeighbors
+        return {
+            'a': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'ă': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'â': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'á': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'à': "aáàảãăắằẳẵâấầẩẫ",
+            'ả': "aảã",
+            'ã': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'ạ': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'ắ': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'ằ': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'ẳ': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'ặ': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'ẵ': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'ấ': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'ầ': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'ẩ': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'ẫ': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'ậ': "aáàảãạăắằẳẵặâấầẩẫậ",
+            'b': "bh",
+            'c': "cgn",
+            'd': "đctơở",
+            'đ': "d",
+            'e': "eéèẻẽẹêếềểễệbpg",
+            'é': "eéèẻẽẹêếềểễệ",
+            'è': "eéèẻẽẹêếềểễệ",
+            'ẻ': "eéèẻẽẹêếềểễệ",
+            'ẽ': "eéèẻẽẹêếềểễệ",
+            'ẹ': "eéèẻẽẹêếềểễệ",
+            'ê': "eéèẻẽẹêếềểễệá",
+            'ế': "eéèẻẽẹêếềểễệố",
+            'ề': "eéèẻẽẹêếềểễệ",
+            'ể': "eéèẻẽẹêếềểễệôốồổỗộ",
+            'ễ': "eéèẻẽẹêếềểễệ",
+            'ệ': "eéèẻẽẹêếềểễệ",
+            'g': "qgộ",
+            'h': "h",
+            'i': "iíìỉĩịat",
+            'í': "iíìỉĩị",
+            'ì': "iíìỉĩị",
+            'ỉ': "iíìỉĩị",
+            'ĩ': "iíìỉĩị",
+            'ị': "iíìỉĩịhự",
+            'k': "klh",
+            'l': "ljidđ",
+            'm': "mn",
+            'n': "mnedư",
+            'o': "oóòỏọõôốồổỗộơớờởợỡ",
+            'ó': "oóòỏọõôốồổỗộơớờởợỡ",
+            'ò': "oóòỏọõôốồổỗộơớờởợỡ",
+            'ỏ': "oóòỏọõôốồổỗộơớờởợỡ",
+            'õ': "oóòỏọõôốồổỗộơớờởợỡ",
+            'ọ': "oóòỏọõôốồổỗộơớờởợỡ",
+            'ô': "oóòỏọõôốồổỗộơớờởợỡ",
+            'ố': "oóòỏọõôốồổỗộơớờởợỡ",
+            'ồ': "oóòỏọõôốồổỗộơớờởợỡ",
+            'ổ': "oóòỏọõôốồổỗộơớờởợỡ",
+            'ộ': "oóòỏọõôốồổỗộơớờởợỡ",
+            'ỗ': "oóòỏọõôốồổỗộơớờởợỡ",
+            'ơ': "oóòỏọõôốồổỗộơớờởợỡ",
+            'ớ': "oóòỏọõôốồổỗộơớờởợỡ",
+            'ờ': "oóòỏọõôốồổỗộơớờởợỡà",
+            'ở': "oóòỏọõôốồổỗộơớờởợỡ",
+            'ợ': "oóòỏọõôốồổỗộơớờởợỡ",
+            'ỡ': "oóòỏọõôốồổỗộơớờởợỡ",
+            'u': "uúùủũụưứừữửựhiaạt",
+            'ú': "uúùủũụưứừữửự",
+            'ù': "uúùủũụưứừữửự",
+            'ủ': "uúùủũụưứừữửự",
+            'ũ': "uúùủũụưứừữửự",
+            'ụ': "uúùủũụưứừữửự",
+            'ư': "uúùủũụưứừữửựg",
+            'ứ': "uúùủũụưứừữửự",
+            'ừ': "uúùủũụưứừữửự",
+            'ử': "uúùủũụưứừữửự",
+            'ữ': "uúùủũụưứừữửự",
+            'ự': "uúùủũụưứừữửựg",
+            'v': "v",
+            'x': "x",
+            'y': "yýỳỷỵỹụ",
+            'ý': "yýỳỷỵỹ",
+            'ỳ': "yýỳỷỵỹ",
+            'ỷ': "yýỳỷỵỹ",
+            'ỵ': "yýỳỷỵỹ",
+            'ỹ': "yýỳỷỵỹ",
+        }
 
     def replace_char_noaccent(self, text, onehot_label):
 
@@ -251,15 +241,9 @@ class SynthesizeData(object):
             for i in range(2):
                 if couple[i] == word:
                     if i == 0:
-                        if capital_flag:
-                            return couple[1].capitalize()
-                        else:
-                            return couple[1]
+                        return couple[1].capitalize() if capital_flag else couple[1]
                     else:
-                        if capital_flag:
-                            return couple[0].capitalize()
-                        else:
-                            return couple[0]
+                        return couple[0].capitalize() if capital_flag else couple[0]
 
     def replace_char_candidate(self, char):
         """
@@ -268,10 +252,7 @@ class SynthesizeData(object):
         for couple in self.char_couples:
             for i in range(2):
                 if couple[i] == char:
-                    if i == 0:
-                        return couple[1]
-                    else:
-                        return couple[0]
+                    return couple[1] if i == 0 else couple[0]
 
     def replace_char_candidate_typo(self, char):
         """
@@ -370,13 +351,13 @@ class SynthesizeData(object):
             function only choose the word that do not has onehot label == 1.
         return: True, text, onehot_label if successful replace, else False, text, onehot_label
         """
-        # account for the case that the word in the text is upper case but its lowercase match the candidates list
-        candidates = []
-        for i in range(len(text)):
-            if text[i].lower() in self.all_word_candidates or text[i].lower() in self.teencode_dict.keys():
-                candidates.append((i, text[i]))
-
-        if len(candidates) == 0:
+        candidates = [
+            (i, text[i])
+            for i in range(len(text))
+            if text[i].lower() in self.all_word_candidates
+            or text[i].lower() in self.teencode_dict.keys()
+        ]
+        if not candidates:
             return False, text, onehot_label
 
         idx = np.random.randint(0, len(candidates))
@@ -407,23 +388,21 @@ class SynthesizeData(object):
                     candidates.append((i, char))
                     break
 
-        if len(candidates) == 0:
-
+        if not candidates:
             return False, text, onehot_label
-        else:
+        idx = np.random.randint(0, len(candidates))
+        prevent_loop = 0
+        while onehot_label[candidates[idx][0]] == 1:
             idx = np.random.randint(0, len(candidates))
-            prevent_loop = 0
-            while onehot_label[candidates[idx][0]] == 1:
-                idx = np.random.randint(0, len(candidates))
-                prevent_loop += 1
-                if prevent_loop > 5:
-                    return False, text, onehot_label
+            prevent_loop += 1
+            if prevent_loop > 5:
+                return False, text, onehot_label
 
-            replaced = self.replace_char_candidate(candidates[idx][1])
-            text[candidates[idx][0]] = re.sub(candidates[idx][1], replaced, text[candidates[idx][0]])
+        replaced = self.replace_char_candidate(candidates[idx][1])
+        text[candidates[idx][0]] = re.sub(candidates[idx][1], replaced, text[candidates[idx][0]])
 
-            onehot_label[candidates[idx][0]] = 1
-            return True, text, onehot_label
+        onehot_label[candidates[idx][0]] = 1
+        return True, text, onehot_label
 
     def replace_with_typo_letter(self, text, onehot_label):
         """
@@ -466,7 +445,7 @@ class SynthesizeData(object):
         if np.random.rand() < 0.05:
             num_wrong = 0
 
-        for i in range(0, num_wrong):
+        for _ in range(0, num_wrong):
             err = np.random.randint(0, num_type_err + 1)
 
             if err == 0:
@@ -483,6 +462,5 @@ class SynthesizeData(object):
                 _, tokens, onehot_label = self.replace_char_noaccent(tokens, onehot_label)
             else:
                 continue
-            # print(tokens)
         return ' '.join(tokens)
 
